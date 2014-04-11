@@ -6,3 +6,10 @@ MonoImporter:
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 84
+  packageName: iTween
+  packageVersion: 2.0.10
+  assetPath: Assets/Plugins/iTween/Plugins/iTween.cs
+  uploadId: 305835

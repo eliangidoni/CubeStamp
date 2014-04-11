@@ -60,6 +60,6 @@ public class StampController : MonoBehaviour {
 	}
 
 	void updateMaterial() {
-		renderer.material = materials [(int)type];
+		GetComponent<Renderer>().material = materials [(int)type];
 	}
 }

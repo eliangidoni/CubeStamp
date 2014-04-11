@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ColorHintController : MonoBehaviour {
@@ -6,7 +7,7 @@ public class ColorHintController : MonoBehaviour {
 	public Rect position, timePosition;
 	public float padding;
 	public Texture texture, timeTexture, timeWarningTexture, powerTexture;
-	public GUIText scoreText;
+	public Text scoreText;
 	public int timeWarningSecs;
 
 	private int timeSecs, score, goalPower;
@@ -69,7 +70,7 @@ public class ColorHintController : MonoBehaviour {
 
 	void Awake(){
 		timeSecs = 0;
-		score = 0; 
+		score = 0;
 		power = 0;
 		goalPower = 0;
 		warningDelta = 0;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ public class GameController : MonoBehaviour {
 	public int burstsInPlayMax, cubeDelayMax, cubeInBurstMax;
 	public int powerGoal;
 	public int timeLimit, timeUnitSecs;
-	public GUIText gameOverText, powerTimeText;
+	public Text gameOverText, powerTimeText;
 
 	private bool isGameOver, isGameStarted;
 	private CubeManager cubeManager;

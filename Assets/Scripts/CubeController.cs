@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,7 +22,7 @@ public class CubeController : MonoBehaviour {
 
 	private Type type, origType;
 	private bool readyToDestroy, killed, isFasten, suicide;
-	private GUIText hint;
+	private Text hint;
 	private Transform stamp;
 	private StampController matchStamp;
 	private float hintDelta;
@@ -84,14 +85,14 @@ public class CubeController : MonoBehaviour {
 			setType(Type.TYPE_MATCH);
 			animStart ();
 
-			Camera.main.audio.PlayOneShot (onMatch);
+			Camera.main.GetComponent<AudioSource>().PlayOneShot (onMatch);
 		} else {
 			readyToDestroy = true;
 		}
 	}
 
 	void AnimateGUITextPixelOffset(Vector2 pixelOffset){
-		hint.pixelOffset = pixelOffset;
+		hint.rectTransform.anchoredPosition = pixelOffset;
 		hintDelta += Time.deltaTime;
 		if (hintDelta >= 0.1f){
 			if (hint.color == Color.white) {
@@ -108,11 +109,11 @@ public class CubeController : MonoBehaviour {
 	}
 
 	void animStart(){
-		iTween.ValueTo(gameObject, iTween.Hash("from",     Vector2.zero, "to", new Vector2(0,20), 
-		                                       "onUpdate", "AnimateGUITextPixelOffset", 
+		iTween.ValueTo(gameObject, iTween.Hash("from",     Vector2.zero, "to", new Vector2(0,20),
+		                                       "onUpdate", "AnimateGUITextPixelOffset",
 		                                       "easeType", iTween.EaseType.linear,
 		                                       "time",     1,
-		                                       "onComplete", "animFinish"));   
+		                                       "onComplete", "animFinish"));
 		//iTween.MoveBy (gameObject, new Vector3(0,1,0), 1);
 	}
 
@@ -155,7 +156,7 @@ public class CubeController : MonoBehaviour {
 	void Awake () {
 		killed = false;
 		readyToDestroy = false;
-		hint = transform.Find ("HintText").guiText;
+		hint = transform.Find ("HintText").GetComponent<Text>();
 		isFasten = false;
 		suicide = false;
 		hint.text = "";
@@ -179,7 +180,7 @@ public class CubeController : MonoBehaviour {
 		ComboController combos = (GameObject.FindWithTag ("ComboController")).GetComponent<ComboController>();
 		combos.addCube (transform);
 
-		Camera.main.audio.PlayOneShot (onTouch);
+		Camera.main.GetComponent<AudioSource>().PlayOneShot (onTouch);
 
 		fasten ();
 		//type = (Type) (((int)type + 1) % (int)Type.TYPE_MAX);
@@ -188,7 +189,7 @@ public class CubeController : MonoBehaviour {
 	}
 
 	void updateMaterial() {
-		transform.Find ("Mesh").renderer.material = materials [(int)type];
+		transform.Find ("Mesh").GetComponent<Renderer>().material = materials [(int)type];
 	}
 
 	void updateHint() {

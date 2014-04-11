@@ -13,12 +13,12 @@ public class FloorController : MonoBehaviour {
 	public void tiltPowerTime(bool isBlink, bool lastTilt){
 		if (! lastTilt){
 			if (isBlink){
-				transform.Find ("Quad").renderer.material = blinkMaterial;
+				transform.Find ("Quad").GetComponent<Renderer>().material = blinkMaterial;
 			} else {
-				transform.Find ("Quad").renderer.material = matchMaterial;
+				transform.Find ("Quad").GetComponent<Renderer>().material = matchMaterial;
 			}
 		}else{
-			transform.Find ("Quad").renderer.material = origMaterial;
+			transform.Find ("Quad").GetComponent<Renderer>().material = origMaterial;
 		}
 	}
 
