@@ -4,11 +4,12 @@ using System.Collections;
 
 public class ColorHintController : MonoBehaviour {
 
-	public Rect position, timePosition;
+	public Rect position, timePosition, scorePosition;
 	public float padding;
 	public Texture texture, timeTexture, timeWarningTexture, powerTexture;
 	public Text scoreText;
 	public int timeWarningSecs;
+	public Transform scoreTransform, powerTransform, timeTransform;
 
 	private int timeSecs, score, goalPower;
 	private float warningDelta, power;
@@ -116,5 +117,14 @@ public class ColorHintController : MonoBehaviour {
 
 	public bool isPowerTime() {
 		return powerTime;
+	}
+
+	void Update() {
+		Vector3 v = Camera.main.ViewportToScreenPoint(new Vector3(position.x,position.y,0));
+		powerTransform.position = new Vector3(v.x + position.width, v.y , powerTransform.position.z);
+		Vector3 v2 = Camera.main.ViewportToScreenPoint(new Vector3(timePosition.x,timePosition.y,0));
+		timeTransform.position = new Vector3(v2.x + timePosition.width, v2.y, timeTransform.position.z);
+		Vector3 v3 = Camera.main.ViewportToScreenPoint(new Vector3(scorePosition.x,scorePosition.y,0));
+		scoreTransform.position = new Vector3(v3.x + scorePosition.width, v3.y, scoreTransform.position.z);
 	}
 }
