@@ -22,7 +22,7 @@ public class CubeController : MonoBehaviour {
 
 	private Type type, origType;
 	private bool readyToDestroy, killed, isFasten, suicide;
-	private Text hint;
+	public Text hint;
 	private Transform stamp;
 	private StampController matchStamp;
 	private float hintDelta;
@@ -156,7 +156,6 @@ public class CubeController : MonoBehaviour {
 	void Awake () {
 		killed = false;
 		readyToDestroy = false;
-		hint = transform.Find ("HintText").GetComponent<Text>();
 		isFasten = false;
 		suicide = false;
 		hint.text = "";
